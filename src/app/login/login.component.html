@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <div class="login" [ngClass]='stateClass'>
+    <p class="title">Log in</p>
+    <div *ngIf="showAlert" class="alert">{{alertText}}</div>
+    <input type="text" placeholder="Email" autofocus [(ngModel)]="email"/>
+    <i class="fa fa-user"></i>
+    <input type="password" placeholder="Password" [(ngModel)]="password" />
+    <i class="fa fa-key"></i>
+    <!--<a >Forgot your password?</a>-->
+    <button (click)="login()">
+      <i class="spinner"></i>
+      <span (click)="login()" [ngClass]="stateClass">{{stateText}}</span>
+    </button>
+  </div>  
+</div>
