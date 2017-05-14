@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       this.showAlert = false;
       
       setTimeout(()=> {
-        this.router.navigate(["/add-recipe"])
+        this.router.navigate(["/my-recipes"])
       }, 300);      
       
     }).catch(result => {
