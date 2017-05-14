@@ -7,7 +7,7 @@ const routes: Routes = [
         path: '', component: LayoutComponent,
         children: [            
             { path: 'add-recipe', loadChildren: './add-recipe/add-recipe.module#AddRecipeModule' },
-
+            { path: 'my-recipes', loadChildren: './my-recipes/my-recipes.module#MyRecipesModule' }
         ]
     }
 ];
