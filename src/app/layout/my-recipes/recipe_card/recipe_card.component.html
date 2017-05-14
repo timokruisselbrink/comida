@@ -1,0 +1,12 @@
+<!--<div class="recipe-card" 
+    [ngStyle]="{'background-image': 'url(' + recipe.imageUrl +')'}">    
+
+
+</div>-->
+ 
+<section class="recipe-card" >
+  <div class="recipe" [ngClass]="isFlipped == true ? 'flipped' : ''">
+    <figure class="front" [ngStyle]="{'background-image': 'url(' + recipe.imageUrl +')'}">1</figure>
+    <figure class="back">{{recipe.title}}</figure>
+  </div>
+</section>

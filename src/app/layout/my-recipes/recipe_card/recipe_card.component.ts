@@ -3,17 +3,17 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
     selector: 'recipe-card',
     templateUrl: './recipe_card.component.html',
-    styleUrls: ['./recipe_card.component.css']
+    styleUrls: ['./recipe_card.component.scss']
 }) 
 export class RecipeCardComponent {    
     @Input() recipe: any;        
-    private showDetails: boolean;
+    private isFlipped: boolean;
 
     setActive(): void {
-        this.showDetails = true;
+        this.isFlipped = true;
     }
 
     setInactive(): void {
-        this.showDetails = false;
+        this.isFlipped = false;
     }
 }

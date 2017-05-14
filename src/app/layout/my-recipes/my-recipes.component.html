@@ -1,3 +1,4 @@
-<p>
-  my-recipes works!
-</p>
+<recipe-card *ngFor='let recipe of recipes | async; let i = index' 
+    [recipe]='recipe'
+    (click)='onClick(i)'>    
+</recipe-card> 
