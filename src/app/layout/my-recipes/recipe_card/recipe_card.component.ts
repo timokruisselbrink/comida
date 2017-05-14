@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 }) 
 export class RecipeCardComponent {    
     @Input() recipe: any;        
-    private isFlipped: boolean;
+    isFlipped: boolean;
 
     setActive(): void {
         this.isFlipped = true;
