@@ -9,7 +9,7 @@ export class RecipeService {
     getRecipes(): Promise<FirebaseListObservable<any[]>> {
         return Promise.resolve(
             this.af.list('/recipes', {
-                query: { limitToLast: 50 }
+                query: { limitToLast: 2 }
             })            
         );
     }

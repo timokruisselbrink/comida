@@ -1,4 +1,52 @@
-<div>test</div>
+<div class="box-wrapper">
+  <div class="box">
+    <p class="title">Add recipe</p>
+    <!--<div class="alert"></div>-->
+
+    <input type="text" placeholder="title" autofocus />
+    <i class="fa fa-cutlery"></i>
+
+    <textarea placeholder="description" ></textarea>
+    <i class="fa fa-info"></i>
+
+    <input type="text" placeholder="preparation time" />
+    <i class="fa fa-clock-o"></i>
+
+    <input type="text" placeholder="cook time" />
+    <i class="fa fa-clock-o"></i>
+
+    <input type="text" placeholder="total time" />
+    <i class="fa fa-clock-o"></i>
+
+    <input type="text" placeholder="total time" />
+    <i class="fa fa-clock-o"></i>
+
+    <input type="text" placeholder="yield" />
+    <i class="fa fa-users"></i>
+
+    <!--Todo: images-->
+
+    <!--Todo: rating-->
+
+    <!--Todo: Categories-->
+
+    <p class="sub-title">Ingredients</p>
+    <div *ngFor="let ingredient of ingredients; let index=index;trackBy:customTrackBy;">
+      <input type="text" placeholder="ingredient" [(ngModel)]="ingredients[index]" (keypress)="ingredientChanged(index)" />
+      <i class="fa fa-list-ul"></i>
+    </div>
+
+
+    <!--Todo: instructions-->
+
+    
+
+    <button>
+      <span>Save</span>
+    </button>
+
+  </div>
+</div>
 
 
 <!--<div class="row columns">

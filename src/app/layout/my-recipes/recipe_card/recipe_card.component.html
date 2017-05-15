@@ -5,8 +5,10 @@
 </div>-->
  
 <section class="recipe-card" >
-  <div class="recipe" [ngClass]="isFlipped == true ? 'flipped' : ''">
-    <figure class="front" [ngStyle]="{'background-image': 'url(' + recipe.imageUrl +')'}">1</figure>
-    <figure class="back">{{recipe.title}}</figure>
+  <div class="recipe" [ngClass]="isActive == true ? 'flipped' : ''">
+    <figure class="front" [ngStyle]="{'background-image': 'url(' + recipe.imageUrl +')'}"></figure>
+    <figure class="back" [ngStyle]="{'background-image': 'url(' + recipe.imageUrl +')'}">
+      <div class="title">{{recipe.title}}</div>
+    </figure>
   </div>
 </section>

@@ -7,13 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 }) 
 export class RecipeCardComponent {    
     @Input() recipe: any;        
-    isFlipped: boolean;
+    isActive: boolean;
 
     setActive(): void {
-        this.isFlipped = true;
+        this.isActive = true;
     }
 
     setInactive(): void {
-        this.isFlipped = false;
+        this.isActive = false;
     }
 }

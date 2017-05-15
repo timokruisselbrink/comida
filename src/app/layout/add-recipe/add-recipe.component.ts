@@ -6,8 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-recipe.component.css']
 })
 export class AddRecipeComponent implements OnInit {
-
+  ingredients:string[] = [''];
   constructor() { }
+
+  ingredientChanged(index:number){
+    if((this.ingredients.length -1 )==index){
+      this.ingredients.push('');
+    }
+  }
+
+  customTrackBy(index: number, obj: any): any {
+    return index;
+  }
 
   ngOnInit() {
   }

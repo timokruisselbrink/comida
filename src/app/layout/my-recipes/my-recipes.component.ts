@@ -12,8 +12,6 @@ import { RecipeCardComponent} from './recipe_card/recipe_card.component';
 export class MyRecipesComponent implements OnInit {  
     @ViewChildren(RecipeCardComponent)
     private recipeCardComponents: QueryList<RecipeCardComponent>;
-    
-    private currentActiveCard: RecipeCardComponent;
 
     recipes: FirebaseListObservable<any[]>;    
     
@@ -29,10 +27,11 @@ export class MyRecipesComponent implements OnInit {
     }
 
     onClick(index: number): void {
-        if(this.currentActiveCard != undefined){
-            this.currentActiveCard.setInactive();
+        var recipe_card:RecipeCardComponent = this.recipeCardComponents.toArray()[index];
+        if(recipe_card.isActive){
+            recipe_card.setInactive();
+        } else{
+           recipe_card.setActive(); 
         }
-        this.currentActiveCard = this.recipeCardComponents.toArray()[index];
-        this.currentActiveCard.setActive();
     }
 }
