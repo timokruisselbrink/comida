@@ -22,15 +22,5 @@ export class AuthGuard implements CanActivate {
             }
         }).first();
 
-    }
-   
-
-    // canActivate() {
-    //     if (this.afAuth.auth.currentUser != undefined){
-    //         return true;
-    //     }
-
-    //     this.router.navigate(['/login']);
-    //     return false;
-    // }
+    }   
 }
