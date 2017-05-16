@@ -11,10 +11,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './shared';
 
 import { environment } from '../environments/environment';
+import { UploadImageComponent } from './shared/components/upload-image/upload-image.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UploadImageComponent
   ],
   imports: [
     BrowserModule,

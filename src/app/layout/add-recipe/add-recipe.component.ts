@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StarRatingComponent } from '../../shared'
 
 @Component({
   selector: 'app-add-recipe',

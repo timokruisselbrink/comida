@@ -5,12 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { AddRecipeRoutingModule } from './add-recipe-routing.module';
 import { AddRecipeComponent } from './add-recipe.component';
 
+import { StarRatingComponent } from '../../shared'
+
 @NgModule({
   imports: [
     CommonModule,
     AddRecipeRoutingModule,
     FormsModule
   ],
-  declarations: [AddRecipeComponent]
+  declarations: [
+    AddRecipeComponent,
+    StarRatingComponent
+  ]
 })
 export class AddRecipeModule { }
