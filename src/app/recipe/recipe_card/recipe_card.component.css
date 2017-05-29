@@ -1,0 +1,67 @@
+.recipe-card {
+    height: 0px;
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+/* Smartphones (portrait) ----------- */
+@media screen and (max-width: 500px) {
+    .recipe-card{
+        width: 100%;
+        padding-bottom: 70%;
+    }
+
+    .details .grey-overlay {
+        padding-bottom: 70%;
+    }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-width : 500px) and (max-width : 1100px) {
+    .recipe-card{
+        width: 50%;
+        padding-bottom: 34%;
+    }
+
+    .details .grey-overlay {
+        padding-bottom: 68%;
+    }
+}
+
+/* Desktops and small laptops ----------- */
+@media only screen  and (min-width : 1100px){
+    .recipe-card{
+        width: 33.3333333333%;
+        padding-bottom: 24%;
+    }
+
+    .details .grey-overlay {
+        padding-bottom: 72%;
+    }
+}
+
+.details { 
+    position: relative;
+}
+
+.details .title {
+    position: fixed;
+    color: white;
+    z-index: 1;
+}
+
+.details .grey-overlay {
+    position: absolute;
+  background: black ;
+  opacity: 0.4;
+  width: 100%;
+  z-index: 0;
+  animation: fade 0.2s linear;
+}
+
+@keyframes fade {
+    0% { opacity: 0 }
+    100% { opacity: 0.4}
+}

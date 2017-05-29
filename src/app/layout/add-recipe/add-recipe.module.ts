@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { AddRecipeRoutingModule } from './add-recipe-routing.module';
 import { AddRecipeComponent } from './add-recipe.component';
 
-import { StarRatingComponent } from '../../shared'
+import { StarRatingComponent, UploadImageComponent, UploadImageService } from '../../shared'
+
 
 @NgModule({
   imports: [
@@ -15,7 +16,11 @@ import { StarRatingComponent } from '../../shared'
   ],
   declarations: [
     AddRecipeComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    UploadImageComponent
+  ],
+  providers: [
+    UploadImageService
   ]
 })
 export class AddRecipeModule { }

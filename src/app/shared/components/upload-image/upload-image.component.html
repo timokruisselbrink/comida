@@ -1,3 +1,36 @@
-<p>
-  upload-image works!
-</p>
+<div>
+    <!--<input type="file" class="file" accept="image/*" (change)="addFile($event)" multiple>-->
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="upload">
+            <input type="file" name="upload"  accept="image/*" (change)="addFile($event)" multiple />
+        </div>
+    </form>
+
+    <button type="button" class="btn btn-danger" (click)="clearFiles()">
+            <span class="glyphicon glyphicon-trash"></span> Clear files
+        </button>
+</div>
+
+
+
+<table class="table" *ngIf="files.length > 0">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <!--<th>Progress</th>-->
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of files">
+            <td [ngClass]="{'text-green': item.isUploading}"><strong>{{ item?.file?.name }}</strong></td>
+            <td nowrap>{{ item?.file?.size / 1024 / 1024 | number:'.2' }} MB</td>
+            <!--<td>
+                    <div class="progress" style="margin-bottom: 0;">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                    </div>
+                </td>-->
+        </tr>
+    </tbody>
+</table>

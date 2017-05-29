@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { StarRatingComponent } from '../../shared'
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { StarRatingComponent, UploadImageComponent, UploadImageService } from '../../shared'
 
 @Component({
   selector: 'app-add-recipe',
@@ -7,8 +7,11 @@ import { StarRatingComponent } from '../../shared'
   styleUrls: ['./add-recipe.component.css']
 })
 export class AddRecipeComponent implements OnInit {
+
+  @ViewChild(UploadImageComponent) uploadImageComponent: UploadImageComponent
+
   ingredients:string[] = [''];
-  constructor() { }
+  constructor(public uploadImageService: UploadImageService) { }
 
   ingredientChanged(index:number){
     if((this.ingredients.length -1 )==index){
@@ -18,6 +21,10 @@ export class AddRecipeComponent implements OnInit {
 
   customTrackBy(index: number, obj: any): any {
     return index;
+  }
+
+  uploadImages(){    
+    this.uploadImageService.uploadImagesToFirebase(this.uploadImageComponent.getFilesToUpload());
   }
 
   ngOnInit() {
