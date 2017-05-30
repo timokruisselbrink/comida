@@ -20,13 +20,13 @@ export class UploadImageService {
   }
 
 
-  uploadImagesToFirebase(files: Array<FileItem>) {
+  uploadImagesToFirebase(files: Array<FileItem>, recipeId:string) {
     let storageRef = firebase.storage().ref();
-
+    
     _.each(files, (item: FileItem) => {
 
       item.isUploading = true;
-      let uploadTask: firebase.storage.UploadTask = storageRef.child(`${this.IMAGES_FOLDER}/${item.file.name}`).put(item.file);
+      let uploadTask: firebase.storage.UploadTask = storageRef.child(`${this.IMAGES_FOLDER}/${recipeId}/${this.newGuid()}`).put(item.file);
 
       uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
         (snapshot) => item.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
@@ -41,6 +41,15 @@ export class UploadImageService {
     });
 
   }
+
+
+  newGuid() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+            return v.toString(16);
+        });
+    }
+
 
   private saveImage(image: any) {
     this.af.list(this.IMAGES_FOLDER).push(image);

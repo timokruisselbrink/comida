@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { StarRatingComponent, UploadImageComponent, UploadImageService } from '../../shared'
+import { StarRatingComponent, UploadImageComponent, UploadImageService, Recipe } from '../../shared'
+import { AngularFireDatabase } from "angularfire2/database";
 
 @Component({
   selector: 'app-add-recipe',
@@ -10,12 +11,31 @@ export class AddRecipeComponent implements OnInit {
 
   @ViewChild(UploadImageComponent) uploadImageComponent: UploadImageComponent
 
-  ingredients:string[] = [''];
-  constructor(public uploadImageService: UploadImageService) { }
+  recipe: Recipe = new Recipe;
+
+  constructor(public uploadImageService: UploadImageService, public af: AngularFireDatabase) { }
+
+  save(){
+    this.recipe.instructions.pop();
+    this.recipe.ingredients.pop();
+
+    const dbRecipes = this.af.list('/recipes');
+    
+    dbRecipes.push(this.recipe).then(data => {      
+      const lastSavedId = /[^/]*$/.exec(data)[0];
+      this.uploadImages(lastSavedId);
+    });
+  }
 
   ingredientChanged(index:number){
-    if((this.ingredients.length -1 )==index){
-      this.ingredients.push('');
+    if((this.recipe.ingredients.length -1 )==index){
+      this.recipe.ingredients.push('');
+    }
+  }
+
+  instructionChanged(index:number){
+    if((this.recipe.instructions.length -1 )==index){
+      this.recipe.instructions.push('');
     }
   }
 
@@ -23,44 +43,13 @@ export class AddRecipeComponent implements OnInit {
     return index;
   }
 
-  uploadImages(){    
-    this.uploadImageService.uploadImagesToFirebase(this.uploadImageComponent.getFilesToUpload());
+  uploadImages(recipeId:string){    
+    this.uploadImageService.uploadImagesToFirebase(this.uploadImageComponent.getFilesToUpload(), recipeId);
   }
 
   ngOnInit() {
   }
 
+
 }
 
-
-
-// user: Observable<User>;
-//     recipes: FirebaseListObservable<any[]>;
-//     titleVal: string = '';
-//     imageUrlVal: string = '/assets/images/';
-
-//     constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
-//         this.recipes = af.list('/recipes', {
-//         query: {
-//             limitToLast: 50
-//         }
-//         });
-
-//         this.user = this.afAuth.authState;
-        
- 
-//     }
-
-//     login() {
-//         this.afAuth.auth.signInAnonymously();
-//     }
-
-//     logout() {
-//         this.afAuth.auth.signOut();
-//     }
-
-//     Save() {
-//         this.recipes.push({ title: this.titleVal, imageUrl: this.imageUrlVal});
-//         this.titleVal = '';
-//         this.imageUrlVal = '/assets/images/';
-//     }

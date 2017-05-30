@@ -3,48 +3,49 @@
     <p class="title">Add recipe</p>
     <!--<div class="alert"></div>-->
 
-    <input type="text" placeholder="title" autofocus />
+    <input type="text" placeholder="title" autofocus [(ngModel)]="recipe.title" />
     <i class="fa fa-cutlery"></i>
 
-    <textarea placeholder="description" ></textarea>
+    <textarea placeholder="description" [(ngModel)]="recipe.description"></textarea>
     <i class="fa fa-info"></i>
 
-    <input type="text" placeholder="preparation time" />
+    <input type="text" placeholder="preparation time" [(ngModel)]="recipe.preparationTime" />
     <i class="fa fa-clock-o"></i>
 
-    <input type="text" placeholder="cook time" />
+    <input type="text" placeholder="cook time" [(ngModel)]="recipe.cookTime"/>
     <i class="fa fa-clock-o"></i>
 
-    <input type="text" placeholder="total time" />
+    <input type="text" placeholder="total time" [(ngModel)]="recipe.totalTime" />
     <i class="fa fa-clock-o"></i>
 
-    <input type="text" placeholder="total time" />
-    <i class="fa fa-clock-o"></i>
-
-    <input type="text" placeholder="yield" />
+    <input type="text" placeholder="yield" [(ngModel)]="recipe.yield" />
     <i class="fa fa-users"></i>
 
     <p class="sub-title">Rating</p>
     <app-star-rating></app-star-rating>
 
-     <p class="sub-title">Images</p>
+    <p class="sub-title">Images</p>
     <app-upload-image></app-upload-image>
 
     <!--Todo: Categories-->
 
     <p class="sub-title">Ingredients</p>
-    <div *ngFor="let ingredient of ingredients; let index=index;trackBy:customTrackBy;">
-      <input type="text" placeholder="ingredient" [(ngModel)]="ingredients[index]" (keypress)="ingredientChanged(index)" />
+    <div *ngFor="let ingredient of recipe.ingredients; let index=index;trackBy:customTrackBy;">
+      <input type="text" placeholder="ingredient" [(ngModel)]="recipe.ingredients[index]" (keypress)="ingredientChanged(index)" />
       <i class="fa fa-list-ul"></i>
     </div>
 
 
     <!--Todo: instructions-->
 
-    
+    <p class="sub-title">Instructions</p>
+    <div *ngFor="let instruction of recipe.instructions; let index=index;trackBy:customTrackBy;">
+      <textarea placeholder="instruction" [(ngModel)]="recipe.instructions[index]" (keypress)="instructionChanged(index)"></textarea>
+      <i><span>{{index + 1}}</span></i>
+    </div>
 
     <button>
-      <span>Save</span>
+      <span (click)="save()">Save</span>
     </button>
 
   </div>
