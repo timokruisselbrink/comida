@@ -22,7 +22,7 @@
     <i class="fa fa-users"></i>
 
     <p class="sub-title">Rating</p>
-    <app-star-rating></app-star-rating>
+    <app-star-rating (selectedStarUpdated)="handleRatingUpdated($event)"></app-star-rating>
 
     <p class="sub-title">Images</p>
     <app-upload-image></app-upload-image>

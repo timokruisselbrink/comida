@@ -47,6 +47,10 @@ export class AddRecipeComponent implements OnInit {
     this.uploadImageService.uploadImagesToFirebase(this.uploadImageComponent.getFilesToUpload(), recipeId);
   }
 
+  handleRatingUpdated(rating){
+    this.recipe.rating = rating;
+  }
+
   ngOnInit() {
   }
 
